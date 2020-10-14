@@ -1,0 +1,39 @@
+Kütüphane Veri Tabanı Analizi
+
+
+1)Hayata geçirilecek sistem neye hizmet edecek?
+..... kurumuna ait kütüphanede yer alan kitapların yer aldığı bir katalog veri tabanıdır.
+
+2)Veri tabanı hangi ihtiyaçları karşılayacak?
+*Kitapların künye bilgileri sorgulanabilecek
+*Yayınevi bilgileri sorgulanabilecek
+*Yazarlara ve ilgili detaylı bilgiler sorgulanabilecek
+*Kütüphanede o kitaptan kaç kopya olduğu sorgulanabilecek
+
+
+3)Veri tabanında hangi veriler depolanacak?
+*Kitap bilgileri
+*yazar bilgileri
+*Yayınevi bilgileri
+
+4)Veri tabanında ne tür veriler depolanacak?
+*Kitap verileri
+
+    ISBN:
+    Eser adı:
+    Yazar adı:
+    Basım yılı:
+    Yayınevi:
+    Dil:
+    Kopya sayısı:
+
+*Yazar verileri
+    Yazar No (otomatik artan)
+    Yazar adı:
+    Yazar soyadı : 
+    URL:
+
+*Yayınevi verileri
+    Yayınevi No
+    Yayınevi adı:
+    URL: 
