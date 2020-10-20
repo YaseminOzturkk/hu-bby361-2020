@@ -2,27 +2,30 @@ Kütüphane Veri Tabanı Analizi
 
 
 1)Hayata geçirilecek sistem neye hizmet edecek?
-Divriği ilçe halk kütüphanesinde yer alan kitapların yer aldığı bir katalog veri tabanıdır.
+
+    Divriği ilçe halk kütüphanesinde yer alan kitapların yer aldığı bir katalog veri tabanıdır.
 
 2)Veri tabanı hangi ihtiyaçları karşılayacak?
-*Kitapların künye bilgileri sorgulanabilecek
-*Yayınevi bilgileri sorgulanabilecek
-*Yazarlara ve ilgili detaylı bilgiler sorgulanabilecek
-*Kütüphanede o kitaptan kaç kopya olduğu sorgulanabilecek
-*Kitapların türü sorgulanabilecek
-*Kitapların konuları sorgulanabilecek
+
+    *Kitapların künye bilgileri sorgulanabilecek,
+    *Yayınevi bilgileri sorgulanabilecek,
+    *Yazarlara ve ilgili detaylı bilgiler sorgulanabilecek,
+    *Kütüphanede o kitaptan kaç kopya olduğu sorgulanabilecek,
+    *Kitapların türü sorgulanabilecek,
+    *Kitapların konuları sorgulanabilecek,
 
 
 3)Veri tabanında hangi veriler depolanacak?
-*Kitap bilgileri
-*yazar bilgileri
-*Yayınevi bilgileri
-*Tür bilgileri(roman, şiir, hikaye, deneme vb.)
-*Konu kategorisi bilgileri (edebiyat, tarih, felsefe, din vb.)
+
+    *Kitap bilgileri
+    *yazar bilgileri
+    *Yayınevi bilgileri
+    *Tür bilgileri(roman, şiir, hikaye, deneme vb.)
+    *Konu kategorisi bilgileri (edebiyat, tarih, felsefe, din vb.)
 
 4)Veri tabanında ne tür veriler depolanacak?
-*Kitap verileri
 
+*Kitap verileri
     Kitap ID:
     ISBN:
     Kitap adı:
@@ -34,13 +37,13 @@ Divriği ilçe halk kütüphanesinde yer alan kitapların yer aldığı bir kata
     Kopya sayısı:
 
 *Yazar verileri
-    Yazar ID 
+    Yazar ID :
     Yazar adı:
     Yazar soyadı : 
     Yazar cinsiyet:
 
 *Yayınevi verileri
-    Yayınevi ID
+    Yayınevi ID:
     Yayınevi adı:
     Yayınevi adresi:
     
