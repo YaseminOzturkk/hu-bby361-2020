@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Anamakine: 127.0.0.1
--- Üretim Zamanı: 03 Kas 2020, 19:51:35
+-- Üretim Zamanı: 17 Kas 2020, 23:30:05
 -- Sunucu sürümü: 10.4.14-MariaDB
 -- PHP Sürümü: 7.4.11
 
@@ -20,8 +20,6 @@ SET time_zone = "+00:00";
 --
 -- Veritabanı: `yaseminozturk_01`
 --
-CREATE DATABASE IF NOT EXISTS `yaseminozturk_01` DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci;
-USE `yaseminozturk_01`;
 
 -- --------------------------------------------------------
 
@@ -31,6 +29,7 @@ USE `yaseminozturk_01`;
 
 CREATE TABLE `kitabın konusu` (
   `kitabınKonuNO` smallint(6) NOT NULL COMMENT 'Kitabın konusu tablosunun anahtar alanı',
+  `kitapKonuKayıtTarih` timestamp NULL DEFAULT current_timestamp() COMMENT 'Kitap konusu kayıt tarihi',
   `kitapKonuAdi` varchar(20) COLLATE utf8_unicode_ci NOT NULL COMMENT 'Kitabın konusu bilgisi'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Kitabın konusu';
 
@@ -38,17 +37,17 @@ CREATE TABLE `kitabın konusu` (
 -- Tablo döküm verisi `kitabın konusu`
 --
 
-INSERT INTO `kitabın konusu` (`kitabınKonuNO`, `kitapKonuAdi`) VALUES
-(1, 'Edebiyat'),
-(2, 'Siyaset-Politika'),
-(3, 'Edebiyat'),
-(4, 'Edebiyat-Aşk'),
-(5, 'Edebiyat'),
-(6, 'Polisiye'),
-(7, 'Felsefe-Düşünce'),
-(8, 'Edebiyat-Aşk'),
-(9, 'Edebiyat'),
-(10, 'Edebiyat');
+INSERT INTO `kitabın konusu` (`kitabınKonuNO`, `kitapKonuKayıtTarih`, `kitapKonuAdi`) VALUES
+(1, '2020-11-17 22:28:33', 'Edebiyat'),
+(2, '2020-11-17 22:28:33', 'Siyaset-Politika'),
+(3, '2020-11-17 22:28:33', 'Edebiyat'),
+(4, '2020-11-17 22:28:33', 'Edebiyat-Aşk'),
+(5, '2020-11-17 22:28:33', 'Edebiyat'),
+(6, '2020-11-17 22:28:33', 'Polisiye'),
+(7, '2020-11-17 22:28:33', 'Felsefe-Düşünce'),
+(8, '2020-11-17 22:28:33', 'Edebiyat-Aşk'),
+(9, '2020-11-17 22:28:33', 'Edebiyat'),
+(10, '2020-11-17 22:28:33', 'Edebiyat');
 
 -- --------------------------------------------------------
 
@@ -58,6 +57,7 @@ INSERT INTO `kitabın konusu` (`kitabınKonuNO`, `kitapKonuAdi`) VALUES
 
 CREATE TABLE `kitabın türü` (
   `KitapTurNo` smallint(6) NOT NULL COMMENT 'Kitap türü tablosunun anahtar alanı',
+  `KitapTurKayıtTarih` timestamp NULL DEFAULT current_timestamp() COMMENT 'Kitap türünün kayıt tarihi',
   `KitapTurAdi` varchar(20) COLLATE utf8_unicode_ci NOT NULL COMMENT 'Kitabın türü bilgisi(şiir, hikaye, roman vb.)'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Kitap türü';
 
@@ -65,17 +65,17 @@ CREATE TABLE `kitabın türü` (
 -- Tablo döküm verisi `kitabın türü`
 --
 
-INSERT INTO `kitabın türü` (`KitapTurNo`, `KitapTurAdi`) VALUES
-(1, 'Roman'),
-(2, 'Roman'),
-(3, 'Roman'),
-(4, 'Roman'),
-(5, 'Şiir'),
-(6, 'Roman'),
-(7, 'Roman'),
-(8, 'Roman'),
-(9, 'Roman'),
-(10, 'Roman');
+INSERT INTO `kitabın türü` (`KitapTurNo`, `KitapTurKayıtTarih`, `KitapTurAdi`) VALUES
+(1, '2020-11-17 22:27:25', 'Roman'),
+(2, '2020-11-17 22:27:25', 'Roman'),
+(3, '2020-11-17 22:27:25', 'Roman'),
+(4, '2020-11-17 22:27:25', 'Roman'),
+(5, '2020-11-17 22:27:25', 'Şiir'),
+(6, '2020-11-17 22:27:25', 'Roman'),
+(7, '2020-11-17 22:27:25', 'Roman'),
+(8, '2020-11-17 22:27:25', 'Roman'),
+(9, '2020-11-17 22:27:25', 'Roman'),
+(10, '2020-11-17 22:27:25', 'Roman');
 
 -- --------------------------------------------------------
 
@@ -85,6 +85,7 @@ INSERT INTO `kitabın türü` (`KitapTurNo`, `KitapTurAdi`) VALUES
 
 CREATE TABLE `kitap` (
   `kitapID` smallint(6) NOT NULL COMMENT 'Kitap tablosunun anahtar alanı',
+  `kitapKayitTarih` timestamp NULL DEFAULT current_timestamp() ON UPDATE current_timestamp() COMMENT 'Kitabın Veri tabanı kayıt tarihi',
   `ISBN` varchar(13) COLLATE utf8_unicode_ci NOT NULL COMMENT 'Kitabın standart numarası',
   `kitapAdi` varchar(200) COLLATE utf8_unicode_ci NOT NULL COMMENT 'Kitabın tam adı',
   `yazarAdi` varchar(100) COLLATE utf8_unicode_ci NOT NULL COMMENT 'Katabın yazarının tam adı',
@@ -99,17 +100,17 @@ CREATE TABLE `kitap` (
 -- Tablo döküm verisi `kitap`
 --
 
-INSERT INTO `kitap` (`kitapID`, `ISBN`, `kitapAdi`, `yazarAdi`, `basimYili`, `yayıneviAdi`, `yayinDili`, `sayfaSayisi`, `kopyaSayisi`) VALUES
-(11, '9786054927821', 'Kirpinin Zarafeti', 'Muriel BARBERY', 2014, 'Kırmızı Kedi Yayınevi', 'Türkçe', 303, 3),
-(12, '9789750718533', 'Bin Dokuz Yüz Seksen Dört', 'George ORWEL', 2020, 'Can Sanat Yayınları Yapım ve Dağıtım Ticaret ve Sanayi A.Ş.', 'Türkçe', 350, 5),
-(13, '9789751414502', 'Tutku Otobüsü', 'John STEINBECK', 2013, 'Remzi Kitabevi', 'Türkçe', 271, 1),
-(14, '9789750516832', 'Fakat Müzeyyen Bu Derin Bir Tutku', 'İlhami ALGÖR', 2015, 'İletişim Yayınları', 'Türkçe', 59, 2),
-(15, '9789750813887', 'Sakın Şaşırma', 'Orhan VELİ', 2008, 'Yapı Kredi Yayınları', 'Türkçe', 111, 1),
-(16, '9789752897458', 'İstanbul Hatırası', 'Ahmet ÜMİT', 2010, 'Everest Yayınları', 'Türkçe', 565, 3),
-(17, '9786053607021', 'Sokrates\'in Savunması', 'Platon', 2012, 'Doğan Kitap', 'Türkçe', 201, 4),
-(18, '9789754587029', 'Gurur ve Önyargı', 'Jane AUSTEN', 2006, 'Türkiye İş Bankası Kültür Yayınları', 'Türkçe', 423, 1),
-(19, '9786059127110', 'Dava', 'Franz KAFKA', 2016, 'Panama Yayıncılık', 'Türkçe', 271, 2),
-(20, '9786052050453', 'Piraye\'de Nazım Olmak', 'Nazan ARISOY', 2019, 'Dokuz Yayınları', 'Türkçe', 208, 3);
+INSERT INTO `kitap` (`kitapID`, `kitapKayitTarih`, `ISBN`, `kitapAdi`, `yazarAdi`, `basimYili`, `yayıneviAdi`, `yayinDili`, `sayfaSayisi`, `kopyaSayisi`) VALUES
+(11, '2020-11-17 22:17:06', '9786054927821', 'Kirpinin Zarafeti', 'Muriel BARBERY', 2014, 'Kırmızı Kedi Yayınevi', 'Türkçe', 303, 3),
+(12, '2020-11-17 22:17:06', '9789750718533', 'Bin Dokuz Yüz Seksen Dört', 'George ORWEL', 2020, 'Can Sanat Yayınları Yapım ve Dağıtım Ticaret ve Sanayi A.Ş.', 'Türkçe', 350, 5),
+(13, '2020-11-17 22:17:06', '9789751414502', 'Tutku Otobüsü', 'John STEINBECK', 2013, 'Remzi Kitabevi', 'Türkçe', 271, 1),
+(14, '2020-11-17 22:17:06', '9789750516832', 'Fakat Müzeyyen Bu Derin Bir Tutku', 'İlhami ALGÖR', 2015, 'İletişim Yayınları', 'Türkçe', 59, 2),
+(15, '2020-11-17 22:17:06', '9789750813887', 'Sakın Şaşırma', 'Orhan VELİ', 2008, 'Yapı Kredi Yayınları', 'Türkçe', 111, 1),
+(16, '2020-11-17 22:17:06', '9789752897458', 'İstanbul Hatırası', 'Ahmet ÜMİT', 2010, 'Everest Yayınları', 'Türkçe', 565, 3),
+(17, '2020-11-17 22:17:06', '9786053607021', 'Sokrates\'in Savunması', 'Platon', 2012, 'Doğan Kitap', 'Türkçe', 201, 4),
+(18, '2020-11-17 22:17:06', '9789754587029', 'Gurur ve Önyargı', 'Jane AUSTEN', 2006, 'Türkiye İş Bankası Kültür Yayınları', 'Türkçe', 423, 1),
+(19, '2020-11-17 22:17:06', '9786059127110', 'Dava', 'Franz KAFKA', 2016, 'Panama Yayıncılık', 'Türkçe', 271, 2),
+(20, '2020-11-17 22:17:06', '9786052050453', 'Piraye\'de Nazım Olmak', 'Nazan ARISOY', 2019, 'Dokuz Yayınları', 'Türkçe', 208, 3);
 
 -- --------------------------------------------------------
 
@@ -119,6 +120,7 @@ INSERT INTO `kitap` (`kitapID`, `ISBN`, `kitapAdi`, `yazarAdi`, `basimYili`, `ya
 
 CREATE TABLE `yayınevi` (
   `yayineviNo` smallint(6) NOT NULL COMMENT 'Yayınevi tablosunun anahtar alanı',
+  `yayineviKayitTarih` timestamp NULL DEFAULT current_timestamp() COMMENT 'Yayınevi veri tabanı giriş tarihi',
   `yayineviAdi` varchar(100) COLLATE utf8_unicode_ci NOT NULL COMMENT 'Kitabın yayınevinin adı',
   `yayineviAdresi` varchar(200) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT 'Yayınevinin web sitesi veya konumu bilgisi',
   `yayineviEposta` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT 'Yayınevinin e-posta adresi'
@@ -128,17 +130,17 @@ CREATE TABLE `yayınevi` (
 -- Tablo döküm verisi `yayınevi`
 --
 
-INSERT INTO `yayınevi` (`yayineviNo`, `yayineviAdi`, `yayineviAdresi`, `yayineviEposta`) VALUES
-(1, 'Kırmızı Kedi Yayınevi', 'https://www.kirmizikedi.com/', 'info@kirmizikedi.com'),
-(2, 'Can Sanat Yayınları Yapım ve Dağıtım Ticaret ve Sanayi A.Ş.', 'https://canyayinlari.com/', 'yayinevi@canyayinlari.com'),
-(3, 'Remzi Kitabevi', 'http://www.remzi.com.tr/anasayfa', 'post@remzi.com.tr'),
-(4, 'İletişim Yayınları', 'https://iletisim.com.tr/', 'iletisim@iletisim.com.tr'),
-(5, 'Yapı Kredi Yayınları', 'https://www.yapikrediyayinlari.com.tr/', 'iletisim@ykykultur.com.tr'),
-(6, 'Everest Yayınları', 'https://www.everestyayinlari.com/', 'info@everestyayinlari.com'),
-(7, 'Doğan Kitap', 'https://www.dogankitap.com.tr/anasayfa', 'iletisim@dogankitap.com.tr'),
-(8, 'Türkiye İş Bankası Kültür Yayınları', 'https://www.iskultur.com.tr/', '-----'),
-(9, 'Panama Yayıncılık', 'https://www.panamayayincilik.com/', 'info@panamayayincilik.com'),
-(10, 'Dokuz Yayınları', 'https://dokuzyayinlari.com/', 'bilgi@dokuzyayinlari.com');
+INSERT INTO `yayınevi` (`yayineviNo`, `yayineviKayitTarih`, `yayineviAdi`, `yayineviAdresi`, `yayineviEposta`) VALUES
+(1, '2020-11-17 22:23:24', 'Kırmızı Kedi Yayınevi', 'https://www.kirmizikedi.com/', 'info@kirmizikedi.com'),
+(2, '2020-11-17 22:23:24', 'Can Sanat Yayınları Yapım ve Dağıtım Ticaret ve Sanayi A.Ş.', 'https://canyayinlari.com/', 'yayinevi@canyayinlari.com'),
+(3, '2020-11-17 22:23:24', 'Remzi Kitabevi', 'http://www.remzi.com.tr/anasayfa', 'post@remzi.com.tr'),
+(4, '2020-11-17 22:23:24', 'İletişim Yayınları', 'https://iletisim.com.tr/', 'iletisim@iletisim.com.tr'),
+(5, '2020-11-17 22:23:24', 'Yapı Kredi Yayınları', 'https://www.yapikrediyayinlari.com.tr/', 'iletisim@ykykultur.com.tr'),
+(6, '2020-11-17 22:23:24', 'Everest Yayınları', 'https://www.everestyayinlari.com/', 'info@everestyayinlari.com'),
+(7, '2020-11-17 22:23:24', 'Doğan Kitap', 'https://www.dogankitap.com.tr/anasayfa', 'iletisim@dogankitap.com.tr'),
+(8, '2020-11-17 22:23:24', 'Türkiye İş Bankası Kültür Yayınları', 'https://www.iskultur.com.tr/', ''),
+(9, '2020-11-17 22:23:24', 'Panama Yayıncılık', 'https://www.panamayayincilik.com/', 'info@panamayayincilik.com'),
+(10, '2020-11-17 22:23:24', 'Dokuz Yayınları', 'https://dokuzyayinlari.com/', 'bilgi@dokuzyayinlari.com');
 
 -- --------------------------------------------------------
 
@@ -148,6 +150,7 @@ INSERT INTO `yayınevi` (`yayineviNo`, `yayineviAdi`, `yayineviAdresi`, `yayinev
 
 CREATE TABLE `yazar` (
   `yazarID` smallint(6) NOT NULL COMMENT 'Yazar tablosunun anahtar alanı',
+  `yazarKayitTarih` timestamp NULL DEFAULT current_timestamp() COMMENT 'Yazar kayıt tarihi',
   `yazarAdi` varchar(50) COLLATE utf8_unicode_ci NOT NULL COMMENT 'Kitabın yazarının adı',
   `yazarSoyadi` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT 'Kitabın yazarının soyadı'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
@@ -156,17 +159,17 @@ CREATE TABLE `yazar` (
 -- Tablo döküm verisi `yazar`
 --
 
-INSERT INTO `yazar` (`yazarID`, `yazarAdi`, `yazarSoyadi`) VALUES
-(1, 'Muriel', 'BARBERY'),
-(2, 'George', 'ORWEL'),
-(3, 'John', 'STEINBECK'),
-(4, 'İlhami ', 'ALGÖR'),
-(5, 'Orhan ', 'VELİ'),
-(6, 'Ahmet ', 'ÜMİT'),
-(7, 'Platon', '-'),
-(8, 'Jane ', 'AUSTEN'),
-(9, 'Franz ', 'KAFKA'),
-(10, 'Nazan ', 'ARISOY');
+INSERT INTO `yazar` (`yazarID`, `yazarKayitTarih`, `yazarAdi`, `yazarSoyadi`) VALUES
+(1, '2020-11-17 22:24:44', 'Muriel', 'BARBERY'),
+(2, '2020-11-17 22:24:44', 'George', 'ORWEL'),
+(3, '2020-11-17 22:24:44', 'John', 'STEINBECK'),
+(4, '2020-11-17 22:24:44', 'İlhami ', 'ALGÖR'),
+(5, '2020-11-17 22:24:44', 'Orhan ', 'VELİ'),
+(6, '2020-11-17 22:24:44', 'Ahmet ', 'ÜMİT'),
+(7, '2020-11-17 22:24:44', 'Platon', ''),
+(8, '2020-11-17 22:24:44', 'Jane ', 'AUSTEN'),
+(9, '2020-11-17 22:24:44', 'Franz ', 'KAFKA'),
+(10, '2020-11-17 22:24:44', 'Nazan ', 'ARISOY');
 
 --
 -- Dökümü yapılmış tablolar için indeksler
@@ -227,7 +230,7 @@ ALTER TABLE `kitabın türü`
 -- Tablo için AUTO_INCREMENT değeri `kitap`
 --
 ALTER TABLE `kitap`
-  MODIFY `kitapID` smallint(6) NOT NULL AUTO_INCREMENT COMMENT 'Kitap tablosunun anahtar alanı', AUTO_INCREMENT=31;
+  MODIFY `kitapID` smallint(6) NOT NULL AUTO_INCREMENT COMMENT 'Kitap tablosunun anahtar alanı', AUTO_INCREMENT=22;
 
 --
 -- Tablo için AUTO_INCREMENT değeri `yayınevi`
